@@ -79,7 +79,6 @@ public class AnalizeTweets {
         System.out.println("\n\n@" + tweet.getUser().getScreenName() + " (hashcode:"+tweets.hash( new HashThis(tweet.getUser().getScreenName()))+
                 ") - " + tweet.getText());
         System.out.println("date: " + tweet.getCreatedAt());
-        //System.out.println("User: " + tweet.getUser());
         System.out.println("Reply to: " + tweet.getInReplyToScreenName());
     }
 
@@ -90,13 +89,8 @@ public class AnalizeTweets {
                 for (User j:i) {
                     if ((j!=null)&&(j.get().size()>2)) {
                         sleepingTime(j);
-
-                    //System.out.println(j.username());   
-
                     }
-
                 }
-
     }
 
     // Check if 'bot' is in the username
@@ -104,12 +98,13 @@ public class AnalizeTweets {
      String checkName(User user) {
         RedBlackBST<Date,Status> tree = user.get();
         String username = tree.iterator().next().getUser().getScreenName();
-        //username.toLowerCase()
-        //username.contains("bot")
-        return username;
+        if (username.toLowerCase().contains("bot")) 
+            return true;
+        return false;
     }
+    
     /**
-     * This method tries to identufy the users that seem not to sleep, i.e. are likely to be bots
+     * This method tries to identify users that seem like they don't sleep
      * @param user
      */
     private static void sleepingTime(User user) {
@@ -121,12 +116,12 @@ public class AnalizeTweets {
         for (Status status:tree) {
             if (prev!=null) {
                 long diffInMiliSec=status.getCreatedAt().getTime()-prev.getCreatedAt().getTime();
-                if ((double)(diffInMiliSec/1000/60)/60<=MIN_SLEEP) {
-                    currentAwake+=(double)(diffInMiliSec/1000/60)/60;
+                if ((double)(diffInMiliSec/1000/60)/60 <= MIN_SLEEP) {
+                    currentAwake += (double)(diffInMiliSec/1000/60)/60;
                     if (currentAwake>maxAwake)
-                        maxAwake=currentAwake;
+                        maxAwake = currentAwake;
                 } else
-                    currentAwake=MIN_SLEEP;
+                    currentAwake = MIN_SLEEP;
             } else {
                 userName=status.getUser().getScreenName();
             }
