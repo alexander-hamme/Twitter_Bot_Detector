@@ -5,12 +5,11 @@ import java.util.Date;
  * @author Alexander Hamme
  * @author Sasha Fedchin
  * 
- * This class contains all the information about the user. It also contains the BST of tweets by this user.
+ * This class contains information about the user, including a BST of this user's tweets.
  */
 
 public class User {
-    private double isBot; //how possible it is that the user is a bot. If isBot<0 - the user is possibly not a bot,
-    //otherwise - it is most likely a bot
+    private double isBot; // probability of the user being a bot. 
     public RedBlackBST<Date, Status> tweets; //all the tweets by this user
 
     /**
@@ -22,16 +21,13 @@ public class User {
     }
 
     /**
-     * multiplies the isBot variable by multiplier after calculating the probability of an independent reason for user
-     * to be a bot
      * @param multiplier value to multiply by
      */
     public void updateIsBot(double multiplier) {
-        isBot*=multiplier;
+        isBot *= multiplier;
     }
 
     /**
-     * 
      * @return isBot
      */
     public double getIsBot() {
@@ -39,10 +35,10 @@ public class User {
     }
 
     /**
-     * puts the tweets to the RedBlackTree
-     * @param key the key of the value to put into the BST
-     * @param val the value itself
-     * @return 1 if the tweet is new, 0 if it is already in the tree
+     * put tweets in the RedBlackTree
+     * @param key: key of the value to put into BST
+     * @param val: value itself
+     * @return 1 if the tweet is new, 0 if it is already contained in the tree
      */
     public int put(Date key, Status val) {
         int oldSize=tweets.size();
@@ -51,7 +47,7 @@ public class User {
     }
 
     /**
-     * @return the RedBlackTree
+     * @return RedBlackTree
      */
     public RedBlackBST get() {
         return tweets;
