@@ -5,15 +5,14 @@
 public class HashThis {
     private String str;
     public static final int R=31;
-    public static int m=1000;
-    //public static boolean wasUsed=false; 
+    public static int m=1000; 
 
     /**
-     * Creates new HashThis instance
+     * Create new HashThis instance
      * @param str
      */
     public HashThis(String str) { 
-        this.str=str;
+        this.str = str;
     }
     /**
      * Public hashcode method for use outside this class
@@ -39,8 +38,8 @@ public class HashThis {
         m=newM;
     }
 
-    public boolean equals(Object anObject) {
-        if (anObject==null) return false;
-        return this.str.equals(((HashThis)anObject).str);
+    public boolean equals(Object obj) {
+        if (obj==null) return false;
+        return this.str.equals(((HashThis)obj).str);
     }
 }
