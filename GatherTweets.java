@@ -1,6 +1,7 @@
 /**
  * @author Alexander Hamme
  * @author Sasha Fedchin
+ * @author S Anderson 
  * 
  * Class to support search of Twitter's tweets using twitter4j API.
  * Concatenates tweets to a file.
