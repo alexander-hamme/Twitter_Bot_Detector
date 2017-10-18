@@ -4,8 +4,8 @@
  */
 public class HashThis {
     private String str;
-    public static final int R=31;
-    public static int m=1000; 
+    public static final int R=31;  // hash multiplier
+    public static int m=1000;      // initial table size
 
     /**
      * Create new HashThis instance
