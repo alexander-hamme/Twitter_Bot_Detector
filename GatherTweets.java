@@ -18,22 +18,22 @@ import java.util.*;
  *
  */
 public class GatherTweets {
-	private static final int MAXTWEETS = 500; // max tweets at once
-	private static final int GATHER_DELAY = 60; //delay between two calls to collectTweets (in seconds)
+    private static final int MAXTWEETS = 500; // max tweets at once
+    private static final int GATHER_DELAY = 60; //delay between two calls to collectTweets (in seconds)
     private static final int EXCEPTION_DELAY = 60*30; //15 mins, the delay to wait if twitter shuts down the flow of tweets
-	private static final int RADIUS= 20*(int)(6*(1.60934)/Math.sqrt(Math.PI));//default radius (in km) of locations searched.
-	// Currently the search area will be 720 miles squared, the average area of a town in the USA (multiplied by 10 to get more data) according to Wikipedia.
+    private static final int RADIUS= 20*(int)(6*(1.60934)/Math.sqrt(Math.PI));//default radius (in km) of locations searched.
+    // Currently the search area will be 720 miles squared, the average area of a town in the USA (multiplied by 10 to get more data) according to Wikipedia.
     private static int SAVE_COUNTER = 10;
     private static String FILE_NAME = "alltweets.dat";
     private static String BACKUP_FILE_NAME = "alltweets2.dat";
     private static int FAIL_COUNTER = 2;
     private static int toCollect; // number of tweets to be collected
-	private static Location[] locs; //Locations to collect tweets from. The number of tweets collected from each city will be proportional to its population.
-	private static int collected; //number of tweets collected
+    private static Location[] locs; //Locations to collect tweets from. The number of tweets collected from each city will be proportional to its population.
+    private static int collected; //number of tweets collected
     private static int currLoc; //the current location from where the tweets are currently being collected, represented by the index in the Location list.
     private static SeparateChainingHashST<HashThis,User> tweets; // tweets arranged in a hash table.
     private static Query query; // query that generated the tweets
-	private Timer timer; // timer that allows the app to gather tweets every n minutes
+    private Timer timer; // timer that allows the app to gather tweets every n minutes
     private static int counter; // Increments each round of collectTweets, after every 10 collections, save to file - ensures data is saved in case process is interuppted
     private static int failureCounter; // Increment each time Twitter gives 0 responses - at a certain number, wait for a delay before requesting again
 
