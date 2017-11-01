@@ -20,7 +20,7 @@ import java.util.*;
 public class GatherTweets {
     private static final int MAXTWEETS = 500; // max tweets at once
     private static final int GATHER_DELAY = 60; //delay between two calls to collectTweets (in seconds)
-    private static final int EXCEPTION_DELAY = 60*30; //15 mins, the delay to wait if twitter shuts down the flow of tweets
+    private static final int EXCEPTION_DELAY = 60*30; //30 mins, the delay to wait if twitter shuts down the flow of tweets
     private static final int RADIUS= 20*(int)(6*(1.60934)/Math.sqrt(Math.PI));//default radius (in km) of locations searched.
     // Currently the search area will be 720 miles squared, the average area of a town in the USA (multiplied by 10 to get more data) according to Wikipedia.
     private static int SAVE_COUNTER = 10;
