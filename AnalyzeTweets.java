@@ -6,7 +6,7 @@ import java.util.Date;
  * @author Alexander Hamme
  * @author Sasha Fedchin
  */
-public class AnalizeTweets {
+public class AnalyzeTweets {
 
     private static SeparateChainingHashST<HashThis,User> tweets=new SeparateChainingHashST<>(100000);
                                                     // tweets arranged in a hash table.
